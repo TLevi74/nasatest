@@ -15,34 +15,26 @@ async function getAPOD() {
   content.classList.add("hidden");
   error.classList.add("hidden");
   try {
-    const response = await fetch(API_URL);
-    if (!response.ok) {
-      throw new Error("API error");
-    }
-    const data = await response.json();
+    const res = await fetch(API_URL);
+    const data = await res.json();
     title.textContent = data.title;
     explanation.textContent = data.explanation;
-    date.textContent = `${data.date}`;
+    date.textContent = `📅 ${data.date}`;
     if (data.media_type === "image") {
-      mediaContainer.innerHTML = `
-        <img src="${data.url}" alt="${data.title}">
-      `;
+      mediaContainer.innerHTML = `<img src="${data.url}" />`;
     } else {
-      mediaContainer.innerHTML = `
-        <iframe
-          src="${data.url}"
-          frameborder="0"
-          allowfullscreen>
-        </iframe>
-      `;
+      mediaContainer.innerHTML = `<iframe src="${data.url}" allowfullscreen></iframe>`;
     }
     loading.classList.add("hidden");
     content.classList.remove("hidden");
   } catch (err) {
-    loading.classList.add("hidden");
     error.classList.remove("hidden");
-    console.error(err);
+    loading.classList.add("hidden");
   }
 }
-refreshBtn.addEventListener("click", getAPOD);
+refreshBtn.addEventListener("click", () => {
+  refreshBtn.style.transform = "scale(0.95)";
+  setTimeout(() => refreshBtn.style.transform = "scale(1)", 150);
+  getAPOD();
+});
 getAPOD();

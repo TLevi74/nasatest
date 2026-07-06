@@ -3,32 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NASA Astronomy Picture of the Day</title>
+  <title>NASA APOD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="stars"></div>
-  <header>
+  <header class="fade-in">
     <h1>NASA Astronomy Picture of the Day</h1>
     <p>Discover our universe every day.</p>
   </header>
-  <main class="card">
-    <div id="loading" class="loading">
-      Loading today's image...
-    </div>
+  <main class="card fade-in">
+    <div id="loading">Loading cosmic data...</div>
     <div id="content" class="hidden">
-      <p id="date" class="date"></p>
+      <p id="date"></p>
       <h2 id="title"></h2>
       <div id="media-container"></div>
       <p id="explanation"></p>
-      <button id="refreshBtn">
-        🔄 Refresh
-      </button>
+      <button id="refreshBtn">↻ Refresh</button>
     </div>
-    <div id="error" class="hidden error">
-      Unable to load NASA data.
-    </div>
+    <div id="error" class="hidden">Failed to load NASA data.</div>
   </main>
+  <footer class="fade-in">
+  Powered by NASA API • Made by
+  <a href="https://github.com/TLevi74" target="_blank">
+    TLevi74 on GitHub
+  </a>
+</footer>
   <script src="script.js"></script>
 </body>
 </html>
